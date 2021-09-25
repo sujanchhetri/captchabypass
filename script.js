@@ -4,7 +4,7 @@ const config = require("./config.json");
 
 const number = "6006496612521300008";
 
-ac.setAPIKey("811bb4fdefb489fb7ffff8ab3c1a9b5d");
+ac.setAPIKey("assafasdsadsadasd");
 // ac.getBalance()
 //   .then((balance) => console.log("my balance is: " + balance))
 //   .catch((error) => console.log("an error with API key: " + error));
