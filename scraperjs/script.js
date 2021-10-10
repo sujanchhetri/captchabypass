@@ -13,9 +13,6 @@ const puppeteer = require("puppeteer");
 const config = require("./config.json");
 const number = "6006496612521300008";
 ac.setAPIKey("sadasdasfasfasfdasfasfasffsfsa");
-// ac.getBalance()
-//   .then((balance) => console.log("my balance is: " + balance))
-//   .catch((error) => console.log("an error with API key: " + error));
 function loginUser(options) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
